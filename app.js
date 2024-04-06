@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv'); // Hide passwords important information
 const morgan = require('morgan'); // Allows us to see activity in the console
 const connectDB = require('./config/db'); // Cloud database connection
-import { engine } from 'express-handlebars';
+const exphbs = require('express-handlebars');
 // Load config
 
 dotenv.config({ path: './config/config.env' }); // Hide passwords and information
