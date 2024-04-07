@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv'); // Hide passwords important information
 const morgan = require('morgan'); // Allows us to see activity in the console
 const connectDB = require('./config/db'); // Cloud database connection
-const exphbs = require('express-handlebars');
+const path = require('path');
 // Load config
 
 dotenv.config({ path: './config/config.env' }); // Hide passwords and information
@@ -17,12 +17,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebars - This is the view engine to render the pages, similar to ejs.
-app.engine('.hbs', engine({ defaultLayout: 'main', extname: '.hbs' }));
-app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, './views/layouts'));
+app.set('view engine', 'ejs');
 
 // Routes
 
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes/index.js'));
 
 // Listening Port
 const PORT = process.env.PORT;
