@@ -5,14 +5,14 @@ const router = express.Router();
 // @route   GET
 
 router.get('/', (req, res, next) => {
-	res.render('main');
+	res.render('login');
 });
 
 // @desc    Dashboard
 // @route   GET /dashboard
 
-router.get('/', (req, res, next) => {
-	res.render('login');
+router.get('/dashboard', (req, res, next) => {
+	res.render('../views/dashboard');
 });
 
 module.exports = router;
