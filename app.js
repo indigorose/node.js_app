@@ -17,9 +17,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebars - This is the view engine to render the pages, similar to ejs.
-app.set('views', path.join(__dirname, './views/layouts'));
+app.set('views', [__dirname + '/views/layouts', __dirname + '/views']);
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/css')));
 // Routes
 
 app.use('/', require('./routes/index.js'));
