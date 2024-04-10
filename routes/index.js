@@ -5,7 +5,7 @@ const router = express.Router();
 // @route   GET
 
 router.get('/', (req, res, next) => {
-	res.render('login');
+	res.render('../views/login2', { layout: 'login' });
 });
 
 // @desc    Dashboard
