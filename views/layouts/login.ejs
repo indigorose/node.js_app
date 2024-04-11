@@ -24,9 +24,13 @@
 	</head>
 	<body>
 		<%- include ('_header.ejs') %>
-		<div class="containter"><%- content %></div>
+		<div class="container login-container">
+			<div class="card">
+				<div class="card-content"><%- content %></div>
+			</div>
+		</div>
 	</body>
 	<script>
-		M.Sidenav.init(document.querySelector('sidenav'));
+		M.Sidenav.init(document.querySelector('.sidenav'));
 	</script>
 </html>
