@@ -22,7 +22,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // EJS config - Wanted to test using handlebars, however depreciation affected the setup.
-app.set('views', [__dirname + '/views/layouts', __dirname + '/views']);
+app.set('views', [
+	__dirname + '/views/layouts',
+	__dirname + '/views',
+	__dirname + '/views/partials',
+]);
 app.set('view engine', 'ejs');
 
 // Static folders - CSS styling
