@@ -1,10 +1,12 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv'); // Hide passwords important information
 const morgan = require('morgan'); // Allows us to see activity in the console
 const connectDB = require('./config/db'); // Cloud database connection
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
+const MongoStore = require('connect-mongo')(session);
 
 // Load config
 dotenv.config({ path: './config/config.env' }); // Hide passwords and information
@@ -33,11 +35,13 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Session middleware
+console.log('Mongoose connection:', mongoose.connection);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
 		resave: false,
 		saveUninitialized: false,
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
 	})
 );
 
