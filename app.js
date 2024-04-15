@@ -28,6 +28,8 @@ app.set('views', [
 	__dirname + '/views/layouts',
 	__dirname + '/views',
 	__dirname + '/views/partials',
+	__dirname + '/views/errors',
+	__dirname + '/views/stories',
 ]);
 app.set('view engine', 'ejs');
 
@@ -52,6 +54,7 @@ app.use(passport.session());
 // Routes
 app.use('/', require('./routes/index.js'));
 app.use('/', require('./routes/auth.js'));
+app.use('/', require('./routes/stories.js'));
 
 // Listening Port
 const PORT = process.env.PORT;
