@@ -10,7 +10,7 @@ const Story = require('../models/Story');
 // @route   GET /stories/add
 
 router.get('/add', ensureAuth, (req, res, next) => {
-	res.render('../views/stories/add');
+	res.render('stories/add');
 });
 
 module.exports = router;

@@ -1,35 +1,69 @@
-<h3>Add Story</h3>
-<div class="row">
-	<form action="/stories" method="post" class="col s12">
-		<div class="row">
-			<div class="input-field">
-				<input type="text" name="title" id="title" />
-				<label for="title">Title</label>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/style.css" />
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+			integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</head>
+	<body>
+		<%- include ('_header.ejs') %>
+		<div class="container">
+			<h3>Add Story</h3>
+			<div class="row">
+				<form action="/stories" method="post" class="col s12">
+					<div class="row">
+						<div class="input-field">
+							<input type="text" name="title" id="title" />
+							<label for="title">Title</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field">
+							<select name="status" id="status">
+								<option value="public" selected>Public</option>
+								<option value="private">Private</option>
+							</select>
+							<label for="status">Status</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field">
+							<h5>Tell Us Your Story:</h5>
+							<textarea name="body" id="body"></textarea>
+						</div>
+					</div>
+
+					<div class="row">
+						<input type="submit" value="Save" class="btn" /><a
+							href="/dashboard"
+							class="btn-orange"
+						></a>
+					</div>
+				</form>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="input-field">
-				<select name="status" id="status">
-					<option value="public" selected>Public</option>
-					<option value="private">Private</option>
-				</select>
-				<label for="status">Status</label>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="input-field">
-				<h5>Tell Us Your Story:</h5>
-				<textarea name="body" id="body"></textarea>
-			</div>
-		</div>
-
-		<div class="row">
-			<input type="submit" value="Save" class="btn" /><a
-				href="/dashboard"
-				class="btn-orange"
-			></a>
-		</div>
-	</form>
-</div>
+	</body>
+	<script>
+		M.Sidenav.init(document.querySelector('.sidenav'));
+		M.FormSelect.init(document.querySelector('#status'));
+	</script>
+</html>
