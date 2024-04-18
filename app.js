@@ -18,6 +18,9 @@ connectDB(); // Database connection
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 //Logging, this will check that we are in development to use morgan in the terminal.
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
