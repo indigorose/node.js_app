@@ -6,7 +6,7 @@ const passport = require('passport');
 // @route   GET /auth/google
 
 router.get(
-	'/google',
+	'/auth/google',
 	passport.authenticate('google', {
 		scope: ['profile'],
 	})
@@ -28,7 +28,7 @@ router.get(
 // @desc Logout user
 // @route 	/auth/logout
 
-router.get('/logout', (req, res, next) => {
+router.get('/auth/logout', (req, res, next) => {
 	req.logout((error) => {
 		if (error) {
 			return next(error);

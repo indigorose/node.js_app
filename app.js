@@ -6,7 +6,8 @@ const connectDB = require('./config/db'); // Cloud database connection
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
+const { engine } = require('express-handlebars');
 
 // Load config
 dotenv.config({ path: './config/config.env' }); // Hide passwords and information
@@ -21,20 +22,31 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//Logging, this will check that we are in development to use morgan in the terminal.
+// Logging, this will check that we are in development to use morgan in the terminal.
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
 
+app.engine(
+	'hbs',
+	engine({
+		extname: 'hbs',
+		defaultLayout: 'main',
+		layoutsDir: 'views/layouts/',
+	})
+);
+app.set('view engine', 'hbs');
+app.set('views', './views');
+
 // EJS config - Wanted to test using handlebars, however depreciation affected the setup.
-app.set('views', [
-	__dirname + '/views/layouts',
-	__dirname + '/views',
-	__dirname + '/views/partials',
-	__dirname + '/views/errors',
-	__dirname + '/views/stories',
-]);
-app.set('view engine', 'ejs');
+// app.set('views', [
+// 	__dirname + '/views/layouts',
+// 	__dirname + '/views',
+// 	__dirname + '/views/partials',
+// 	__dirname + '/views/errors',
+// 	__dirname + '/views/stories',
+// ]);
+// app.set('view engine', 'ejs');
 
 // Static folders - CSS styling
 app.use(express.static(path.join(__dirname, 'public')));
@@ -55,8 +67,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/', require('./routes/index.js'));
-app.use('/', require('./routes/auth.js'));
+app.use('/', require('./routes/index'));
+app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/stories.js'));
 
 // Listening Port

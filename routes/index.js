@@ -4,10 +4,16 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 // Story functionality
 
-const Story = require('../models/Story');
+// const Story = require('../models/Story');
 
 // @desc    Login/Landing Page
 // @route   GET
+
+router.get('/', (req, res) => {
+	res.render('login', {
+		layout: 'login',
+	});
+});
 
 router.get('/', ensureGuest, (req, res, next) => {
 	res.render('../views/login2', { layout: 'login' });
@@ -15,6 +21,10 @@ router.get('/', ensureGuest, (req, res, next) => {
 
 // @desc    Dashboard
 // @route   GET /dashboard
+
+router.get('/dashboard', (req, res) => {
+	res.render('dashboard');
+});
 
 router.get('/dashboard', ensureAuth, async (req, res, next) => {
 	try {
