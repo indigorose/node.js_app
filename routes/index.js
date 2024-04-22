@@ -4,7 +4,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 // Story functionality
 
-// const Story = require('../models/Story');
+const Story = require('../models/Story');
 
 // @desc    Login/Landing Page
 // @route   GET
