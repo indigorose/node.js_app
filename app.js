@@ -29,9 +29,17 @@ if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
 
+const { formatDate, stripTags, truncate, editIcon } = require('./helpers/hbs');
+
 app.engine(
 	'hbs',
 	engine({
+		helpers: {
+			formatDate,
+			stripTags,
+			truncate,
+			editIcon,
+		},
 		extname: 'hbs',
 		defaultLayout: 'main',
 		layoutsDir: 'views/layouts/',
