@@ -66,6 +66,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Global variables
+app.use(function (req, res, next) {
+	res.locals.user = req.user || null;
+	next();
+});
+
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/auth'));
