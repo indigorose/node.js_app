@@ -75,7 +75,7 @@ app.use(function (req, res, next) {
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/auth'));
-app.use('/', require('./routes/stories.js'));
+app.use('/', require('./routes/stories'));
 
 // Listening Port
 const PORT = process.env.PORT;
